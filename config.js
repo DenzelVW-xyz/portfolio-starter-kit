@@ -143,19 +143,19 @@ const SITE = {
        • To REORDER sections:  move a whole line up or down
        • To RENAME a nav link: change the "nav" text
      The "id" must stay the same (the code matches content to it). */
-  sections: [
-    { id: "about",        nav: "About",        show: true  },
-    { id: "now",          nav: "Now",          show: true  },  // safe to delete
-    { id: "stats",        nav: "Highlights",   show: false },  // safe to delete · "by the numbers" — set true to show
-    { id: "experience",   nav: "Experience",   show: true  },
-    { id: "education",    nav: "Education",     show: true  },
-    { id: "skills",       nav: "Skills",       show: true  },
-    { id: "projects",     nav: "Projects",     show: true  },
-    { id: "gallery",      nav: "Gallery",      show: true  },  // safe to delete · photo grid
-    { id: "writing",      nav: "Writing",      show: true  },  // safe to delete
-    { id: "testimonials", nav: "References",   show: true  },  // safe to delete
-    { id: "contact",      nav: "Contact",      show: true  },
-  ],
+sections: [
+    { id: "about",        nav: "About",      show: true },
+    { id: "now",          nav: "Now",        show: true },
+    { id: "stats",        nav: "Highlights", show: false },
+    { id: "experience",   nav: "Experience", show: true },
+    { id: "education",    nav: "Education",  show: true },
+    { id: "skills",       nav: "Skills",     show: true },
+    { id: "projects",     nav: "Projects",   show: true },
+    { id: "gallery",      nav: "Gallery",    show: false },
+    { id: "writing",      nav: "Writing",    show: false },
+    { id: "testimonials", nav: "References", show: false },
+    { id: "contact",      nav: "Contact",    show: true },
+],
 
   /* ===================================================================
      ===== ABOUT ======================================================
@@ -429,10 +429,7 @@ const SITE = {
           "My personal homelab running across Linux servers and Raspberry Pi devices. I use Docker to host and manage services like Pi-hole, Unbound, Portainer, Uptime Kuma, and Tailscale. It's where I experiment with networking, system administration, and self-hosting.",
         image: "assets/img/project-1.svg",
         tags: ["Linux", "Docker", "Networking", "Self-Hosting"],
-        links: [
-          { type: "demo", label: "Live Demo", url: "" },
-          { type: "source", label: "Documentation", url: "" },
-        ],
+        links: [],
       },
       {
         featured: false,
@@ -441,10 +438,7 @@ const SITE = {
           "A cybersecurity-focused relational database built using PostgreSQL and Docker. Designed to organise CVE vulnerabilities, affected software, version ranges, and exploit references while maintaining data integrity through relational constraints.",
         image: "assets/img/cyberintel-architecture.svg",
         tags: ["PostgreSQL", "SQL", "Docker", "Cybersecurity"],
-        links: [
-          { type: "demo", label: "Live Demo", url: "" },
-          { type: "source", label: "Source Code", url: "" },
-        ],
+        links: [],
       },
       {
         featured: false,
@@ -453,10 +447,7 @@ const SITE = {
           "An isolated virtual environment using Kali Linux and Metasploitable 2 to explore network reconnaissance, vulnerability assessment, and penetration testing concepts. Experimenting with tools such as Nmap and Metasploit to better understand system security.",
         image: "assets/img/cybersecurity-lab.svg",
         tags: ["Cybersecurity", "Linux", "VMware", "Nmap"],
-        links: [
-          { type: "demo", label: "Lab Writeups", url: "" },
-          { type: "source", label: "Documentation", url: "" },
-        ],
+        links: [],
       },
       {
         featured: false,
@@ -466,8 +457,11 @@ const SITE = {
         image: "assets/img/python-projects.svg",
         tags: ["Python", "Programming", "Automation"],
         links: [
-          { type: "demo", label: "View Projects", url: "" },
-          { type: "source", label: "GitHub", url: "" },
+            {
+                type: "source",
+                label: "View on GitHub",
+                url: "https://github.com/DenzelVW-xyz/Python-Course-Projects"
+            }
         ],
       },
     ],
@@ -545,7 +539,7 @@ const SITE = {
      ===== CONTACT ====================================================
      =================================================================== */
   contact: {
-    intro: "Say hello",
+    intro: "Get in touch",
     heading: "Let's connect",                       // 👉 EDIT
     text: "I'm always happy to chat — about work, ideas, or just to say hi. Drop me a line and I'll get back to you.", // 👉 EDIT
     email: "denvass2020@gmail.com",                     // 👉 EDIT — your email address
@@ -559,7 +553,7 @@ const SITE = {
     //   3. Paste it into formAction below and set form: true
     // See the README "Turn on the contact form" recipe for details.
     form: false,                                    // 👉 EDIT — true to show the form
-    formAction: "https://formspree.io/f/your-id",   // 👉 EDIT — your Formspree (or other) endpoint
+    formAction: "",   // 👉 EDIT — your Formspree (or other) endpoint
   },
 
   /* ===================================================================
