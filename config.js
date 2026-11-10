@@ -50,10 +50,10 @@ const SITE = {
      box on the website. Want fully custom colours? Open css/styles.css
      and edit the variables at the very top — the README shows you how. */
   theme: {
-    palette: "slate",        // 👉 EDIT — colour: "slate" "forest" "sunset" "violet" "rose" "ocean" "mono"
-    style: "soft",           // 👉 EDIT — the "look": "soft" (rounded, default) or "flat" (squared/editorial)
+    palette: "rose",        // 👉 EDIT — colour: "slate" "forest" "sunset" "violet" "rose" "ocean" "mono"
+    style: "flat",           // 👉 EDIT — the "look": "soft" (rounded, default) or "flat" (squared/editorial)
     defaultMode: "auto",     // "auto" follows the visitor's device · or force "light" / "dark"
-    font: "system",          // "system" (fast, no download) or a Google Font name — see README
+    font: "Jetbrains Mono",          // "system" (fast, no download) or a Google Font name — see README
   },
 
   /* ===================================================================
@@ -64,7 +64,7 @@ const SITE = {
      show: false to remove it for good. (Visitors can also click ✕ to
      hide it in their own browser.) */
   guide: {
-    show: true,              // 👉 EDIT — set to false when you're done setting up
+    show: false,              // 👉 EDIT — set to false when you're done setting up
   },
 
   /* ===================================================================
@@ -74,7 +74,7 @@ const SITE = {
      templates, get help, and share the site you build. It appears in
      the "Start here" box while you set up. Set show: false to hide it. */
   community: {
-    show: true,
+    show: false,
     label: "Portfolio Community",
     url: "https://example.com/portfolio-community",   // 👉 EDIT — the community's web address
   },
@@ -85,8 +85,8 @@ const SITE = {
      Fill these in once your site is online. The url is the address
      people will visit (you get it from GitHub Pages — see the README). */
   site: {
-    url: "https://christian-y-wu.github.io/portfolio-starter-kit/",   // 👉 EDIT — your live web address
-    title: "Alex Doe — Personal Portfolio",              // 👉 EDIT — shows in the browser tab & Google
+    url: "https://www.denzelvw.dev/",   // 👉 EDIT — your live web address
+    title: "Denzel Vassallo Wright - Portfolio",              // 👉 EDIT — shows in the browser tab & Google
     description:                                          // 👉 EDIT — 1 sentence Google shows under your title
       "Welcome to my personal portfolio — my projects, my story, and how to get in touch.",
     ogImage: "assets/img/og-image.svg",   // 👉 EDIT — the picture shown when your link is shared (1200×630)
@@ -97,7 +97,7 @@ const SITE = {
      ===== NAVBAR  (the bar pinned to the top) ========================
      =================================================================== */
   nav: {
-    brand: "Alex Doe",       // 👉 EDIT — your name or logo text (top-left)
+    brand: "DenzelVW",       // 👉 EDIT — your name or logo text (top-left)
     showThemeToggle: true,   // the light/dark switch
     showDotRail: true,       // the little dots on the right that show which section you're in (set false to hide)
     commandPalette: true,    // the quick search (press Ctrl/⌘ + K or "/") — jump anywhere, switch theme, copy email
@@ -110,11 +110,11 @@ const SITE = {
     statusText: "Available for new opportunities",  // 👉 EDIT — e.g. "Based in your city" or "Open to freelance"
     statusOpen: true,                  // true = green dot, false = grey dot
     eyebrow: "Hi, my name is",         // the small line above your name
-    name: "Alex Doe",                  // 👉 EDIT — your full name
-    nameHighlight: "Doe",              // part of your name to underline in the accent colour ("" for none)
+    name: "Denzel Vassallo Wright",                  // 👉 EDIT — your full name
+    nameHighlight: "",              // part of your name to underline in the accent colour ("" for none)
     tagline:                           // 👉 EDIT — one or two sentences about you
-      "Welcome to my corner of the web. I love creating things, learning new skills, and sharing the work I'm proud of. Have a look around.",
-    typewriter: false,                 // OPTIONAL typing animation on the name (off under reduced-motion)
+      "Welcome to my corner of the web. I love anything Tech: Programming, Robotics, Python, Ai, the list goes on.",
+    typewriter: true,                 // OPTIONAL typing animation on the name (off under reduced-motion)
 
     // The two buttons under your tagline. The "href" jumps to a section.
     primaryCta:   { label: "View my work", href: "#projects" },  // 👉 EDIT
@@ -122,11 +122,11 @@ const SITE = {
 
     // "Download CV" button → put your real PDF at assets/cv.pdf (keep the name).
     // Not got a CV? Set show: false to hide the button.
-    cv: { show: true, label: "Download CV", file: "assets/cv.pdf" },
+    cv: { show: false, label: "Download CV", file: "assets/cv.pdf" },
 
     // The "At a glance" card on the right. Each row scrolls to a section.
     // icon names: user · briefcase · graduation · wrench · folder · pen · map-pin · mail
-    glanceTitle: "At a glance",
+    glanceTitle: "Jump To...",
     glance: [
       { icon: "map-pin",   label: "Based in",   value: "Your City",   href: "#about" },      // 👉 EDIT
       { icon: "user",      label: "About",      value: "Who I am",    href: "#about" },      // 👉 EDIT
@@ -163,21 +163,20 @@ const SITE = {
   about: {
     intro: "A little about me",                 // the short line under the section title
     photo: "assets/img/portrait.svg",           // 👉 EDIT — your photo (square works best, ~600×600)
-    photoAlt: "A photo of Alex Doe",            // 👉 EDIT — describe the photo (for screen readers)
+    photoAlt: "A photo of me, hi :)",            // 👉 EDIT — describe the photo (for screen readers)
     // Each item in this list becomes a paragraph. Write a few genuine
     // sentences about yourself. Add or remove paragraphs freely.
     paragraphs: [
-      "Hi, I'm Alex! I'm a curious person who loves learning new things, working on creative projects, and spending time with good people.",
-      "I care about doing thoughtful work and leaving things a little better than I found them. Away from the desk you'll usually find me reading, outdoors, or planning a small adventure.",
-      "This is my little corner of the internet — thanks for stopping by.",
+      "Hello there! I'm Denzel! I'm a computer geek who loves anything tech, cute animals (Honorable mention: Guinea Pigs) and learning new things!",
+      "I love experimenting and messing around with things like linux, self hosting interesting programs, and have an interest in projects that combine hardware and software to create something special and innovative.",
+      "Thanks for reading!.",
     ],
-    interests: ["Learning", "Travel", "Photography", "Music", "Reading", "Volunteering"], // 👉 EDIT — your tag chips
+    interests: ["Cybersecurity", "Programming", "Linux", "Self-Hosting", "Networking", "Databases", "Hardware", "Electronics", "3D Printing", "Gaming", "Automation", "Open Source", "Raspberry Pi", "Homelabbing"], // 👉 EDIT — your tag chips
     // Optional quick facts. Delete a line to hide it, or set quickFacts: [] to hide all.
     quickFacts: [
-      { label: "Location",  value: "Your City, Country" },  // 👉 EDIT
-      { label: "Pronouns",  value: "they/them" },           // 👉 EDIT (or delete this line)
-      { label: "Languages", value: "English" },             // 👉 EDIT
-      { label: "Email",     value: "hello@example.com" },   // 👉 EDIT
+      { label: "Location",  value: "Ħad-Dingli, Malta" },  // 👉 EDIT
+      { label: "Languages", value: "English, Maltese" },             // 👉 EDIT
+      { label: "Email",     value: "denvass2020@gmail.com" },   // 👉 EDIT
     ],
   },
 
@@ -188,9 +187,10 @@ const SITE = {
   now: {
     intro: "What I'm up to right now",
     items: [
-      { icon: "folder", text: "Working on a project I'm genuinely excited about." }, // 👉 EDIT
-      { icon: "pen",    text: "Learning a new skill, a little bit every day." },
-      { icon: "user",   text: "Hoping to meet more people who care about their craft." },
+      { icon: "folder", text: "Building random projects with Python, SQL, and whatever else catches my interest." },
+      { icon: "pen", text: "Studying Computer Systems and Networks at MCAST, learning something new every day." },
+      { icon: "wrench", text: "Tinkering with Linux servers, self-hosted services, and my homelab (and occasionally breaking things)." },
+      { icon: "user", text: "Exploring cybersecurity and working towards turning my passion for tech into a career." },
     ],
   },
 
@@ -202,7 +202,7 @@ const SITE = {
      show: true to switch it on.
        value · any text — "5+", "100%", "30"
        label · what the number means */
-  stats: {
+/*  stats: {
     intro: "A few highlights",
     items: [
       { value: "5+",   label: "Years doing what I love" }, // 👉 EDIT
@@ -210,7 +210,7 @@ const SITE = {
       { value: "12",   label: "Happy collaborators" },     // 👉 EDIT
       { value: "100%", label: "Made with care" },          // 👉 EDIT
     ],
-  },
+  }, /*
 
   /* ===================================================================
      ===== EXPERIENCE  (your history — a timeline) ====================
@@ -222,79 +222,189 @@ const SITE = {
        dates  · any text, e.g. "2022 — Present"
        logo   · OPTIONAL small image path, or "" for none
        bullets· 1–3 short lines about what you did (a list) */
+
+
   experience: {
     intro: "Where I've spent my time",
     items: [
       {
-        title: "Project Coordinator",                 // 👉 EDIT
-        org: "Evergreen Studio",                      // 👉 EDIT
-        dates: "2022 — Present",                      // 👉 EDIT
+        title: "Advanced Diploma in IT (Computer Systems and Networks)",
+        org: "MCAST",
+        dates: "2026 — Present",
         logo: "",
         bullets: [
-          "Helped plan and run projects from first idea to finished result.",
-          "Brought a calmer, simpler way of working to a busy team.",
-          "Grew the community around what we do.",
+          "Studying networking, programming, databases, and computer systems.",
+          "Developing practical skills through coursework and hands-on projects.",
+          "Working towards pursuing a degree in cybersecurity.",
         ],
       },
       {
-        title: "Team Member",
-        org: "Northwind Co.",
-        dates: "2020 — 2022",
+        title: "Homelab & Self-Hosting Enthusiast",
+        org: "Personal Projects",
+        dates: "Ongoing",
         logo: "",
         bullets: [
-          "Supported the team across a bit of everything.",
-          "Learned to work closely with people in lots of different roles.",
+          "Managing Linux servers and Raspberry Pi devices.",
+          "Deploying and maintaining services using Docker and Portainer.",
+          "Experimenting with networking, DNS, remote access, and system administration.",
         ],
       },
       {
-        title: "Volunteer",
-        org: "Local Community Group",
-        dates: "2019 — 2020",
+        title: "Programming & Software Development",
+        org: "Independent Learning",
+        dates: "Ongoing",
         logo: "",
         bullets: [
-          "Organised events and lent a hand wherever it was needed.",
+          "Building projects and solving programming challenges using Python.",
+          "Designing relational databases using SQL and PostgreSQL.",
+          "Exploring automation, scripting, and new technologies through experimentation.",
+        ],
+      },
+      {
+        title: "Cybersecurity Enthusiast",
+        org: "Personal Security Lab",
+        dates: "Ongoing",
+        logo: "",
+        bullets: [
+          "Exploring cybersecurity concepts through hands-on virtual labs.",
+          "Practising network reconnaissance and vulnerability assessment using tools such as Nmap.",
+          "Learning about system vulnerabilities, exploitation techniques, and defensive security.",
+        ],
+      },
+      {
+        title: "Bartender",
+        org: "Il-Veduta Restaurant",
+        dates: "Summer 2026",
+        logo: "",
+        bullets: [
+          "Prepared and served beverages in a busy restaurant environment.",
+          "Worked closely with colleagues to ensure smooth and efficient service.",
+          "Developed communication, teamwork, and time management skills.",
+          "Learned to stay organised and work efficiently under pressure.",
         ],
       },
     ],
   },
 
+
+
   /* ===================================================================
      ===== EDUCATION  (same timeline pattern, simpler) ================
      =================================================================== */
+
   education: {
-    intro: "Where I studied",
+    intro: "Where I've studied and what I've learned",
     items: [
       {
-        title: "Bachelor's Degree",         // 👉 EDIT
-        org: "City University",             // 👉 EDIT
-        dates: "2015 — 2019",               // 👉 EDIT
+        title: "Advanced Diploma in IT (Computer Systems and Networks)",
+        org: "MCAST",
+        dates: "2026 — Present",
         logo: "",
-        bullets: ["Studied a subject I loved and made friends for life."],
+        bullets: [
+          "Studying computer systems, networking, programming, and databases.",
+          "Gaining practical experience through hands-on assignments and projects.",
+          "Planning to pursue a Bachelor's degree in Cybersecurity.",
+        ],
       },
       {
-        title: "Online Certificate",
-        org: "An Online Academy",
-        dates: "2021",
+        title: "Python in Practice",
+        org: "ShipThatCode",
+        dates: "November 2026",
         logo: "",
-        bullets: [],
+        bullets: [
+          "Completed an intermediate-level Python programming course.",
+          "Developed practical programming and problem-solving skills.",
+        ],
+      },
+      {
+        title: "Python Fundamentals",
+        org: "ShipThatCode",
+        dates: "November 2026",
+        logo: "",
+        bullets: [
+          "Completed a course covering core Python programming concepts.",
+          "Practised functions, data structures, and programming fundamentals.",
+        ],
+      },
+      {
+        title: "SQL Fundamentals",
+        org: "ShipThatCode",
+        dates: "November 2026",
+        logo: "",
+        bullets: [
+          "Learned SQL querying and relational database fundamentals.",
+          "Practised filtering, joins, aggregation, and working with data.",
+        ],
+      },
+      {
+        title: "Secondary Education — O-Levels",
+        org: "St Nicholas College, Dingli Secondary School",
+        dates: "Completed 2026",
+        logo: "",
+        bullets: [
+          "Completed secondary education and MATSEC examinations.",
+          "Subjects included Mathematics, English Language, Maltese, Physics, Computing, and Biology.",
+          "Also studied English Literature, Environmental Studies, and Religious Knowledge.",
+        ],
+      },
+      {
+        title: "ICT C3 — MQF Level 3",
+        org: "St Nicholas College, Dingli Secondary School",
+        dates: "July 2026",
+        logo: "",
+        bullets: [
+          "Achieved Grade A in ICT at MQF Level 3.",
+          "Developed foundational knowledge and practical ICT skills.",
+        ],
       },
     ],
   },
+
 
   /* ===================================================================
      ===== SKILLS / TOOLKIT  (grouped tags) ===========================
      ===================================================================
      Group your skills however makes sense for YOU. Rename the groups,
      add your own. Each group has a "name" and a list of "items". */
+
   skills: {
-    intro: "What I bring to the table",
+    intro: "Technologies, tools, and skills I've picked up along the way",
     groups: [
-      { name: "Strengths", items: ["Communication", "Teamwork", "Problem-solving", "Organisation"] }, // 👉 EDIT
-      { name: "Tools",     items: ["Office suite", "Email & calendars", "Notion", "Canva"] },          // 👉 EDIT
-      { name: "Languages", items: ["English", "Spanish"] },                                            // 👉 EDIT
-      { name: "Interests", items: ["Design", "Writing", "Photography"] },                              // 👉 EDIT
+      {
+        name: "Programming & Databases",
+        items: ["Python", "SQL", "PostgreSQL", "SQL Server", "Bash", "Git"],
+      },
+      {
+        name: "Operating Systems",
+        items: ["Linux", "Debian", "Ubuntu", "Kali Linux", "Windows", "Windows Server"],
+      },
+      {
+        name: "Networking & Cybersecurity",
+        items: ["TCP/IP", "DNS", "DHCP", "VPNs", "Nmap", "Metasploit", "Wireshark", "Network Troubleshooting"],
+      },
+      {
+        name: "Self-Hosting & Infrastructure",
+        items: ["Docker", "Docker Compose", "Portainer", "Pi-hole", "Unbound", "Tailscale", "Uptime Kuma", "Raspberry Pi"],
+      },
+      {
+        name: "Development Tools",
+        items: ["GitHub", "VS Code", "PyCharm", "DBeaver", "SSMS", "Oracle SQL Developer Data Modeler", "VMware"],
+      },
+      {
+        name: "Hardware & Electronics",
+        items: ["PC Building", "Hardware Troubleshooting", "3D Printing", "Raspberry Pi", "Bambu Studio"],
+      },
+      {
+        name: "Soft Skills",
+        items: ["Problem-Solving", "Teamwork", "Communication", "Adaptability", "Time Management", "Independent Learning"],
+      },
+      {
+        name: "Interests",
+        items: ["Cybersecurity", "Programming", "Linux", "Homelabbing", "Open Source", "Automation", "Gaming"],
+      },
     ],
   },
+
 
   /* ===================================================================
      ===== PROJECTS  (your work — the star of the show) ===============
@@ -307,51 +417,62 @@ const SITE = {
        tags  · a few short labels (skills, topics — your call)
        links · buttons on the card. Set a url to "" to hide that button.
                type can be "demo", "source", or any label you like. */
+
   projects: {
-    // Clickable tag filters above your projects. They're built AUTOMATICALLY
-    // from the tags you use below (no list to maintain). They only appear
-    // when you have a few different tags — set to false to hide them.
     filters: true,
-    intro: "A few things I've worked on",
+    intro: "A collection of things I've built, broken, and experimented with.",
     items: [
       {
         featured: true,
-        title: "Community Recipe Book",                               // 👉 EDIT
-        description:                                                  // 👉 EDIT
-          "A collaborative cookbook bringing together favourite recipes from friends and neighbours. I gathered the contributions and designed the layout — my proudest little side project.",
-        image: "assets/img/project-1.svg",                           // 👉 EDIT — 1200×750 works well
-        tags: ["Design", "Community", "Writing"],                    // 👉 EDIT
+        title: "Self-Hosted Homelab",
+        description:
+          "My personal homelab running across Linux servers and Raspberry Pi devices. I use Docker to host and manage services like Pi-hole, Unbound, Portainer, Uptime Kuma, and Tailscale. It's where I experiment with networking, system administration, and self-hosting.",
+        image: "assets/img/project-1.svg",
+        tags: ["Linux", "Docker", "Networking", "Self-Hosting"],
         links: [
-          { type: "demo",   label: "Take a look", url: "https://example.com" },             // 👉 EDIT
-          { type: "source", label: "Details",     url: "https://example.com" },             // 👉 EDIT
+          { type: "demo", label: "Live Demo", url: "" },
+          { type: "source", label: "Documentation", url: "" },
         ],
       },
       {
         featured: false,
-        title: "Personal Blog",
+        title: "CyberIntel Database",
         description:
-          "A small blog where I write about what I'm learning. A nice way to keep track of ideas and share them with others.",
+          "A cybersecurity-focused relational database built using PostgreSQL and Docker. Designed to organise CVE vulnerabilities, affected software, version ranges, and exploit references while maintaining data integrity through relational constraints.",
         image: "assets/img/project-2.svg",
-        tags: ["Writing", "Web"],
+        tags: ["PostgreSQL", "SQL", "Docker", "Cybersecurity"],
         links: [
-          { type: "demo",   label: "Read it", url: "https://example.com" },
-          { type: "source", label: "Source",  url: "" },   // empty url = button hidden
+          { type: "demo", label: "Live Demo", url: "" },
+          { type: "source", label: "Source Code", url: "" },
         ],
       },
       {
         featured: false,
-        title: "Photography Series",
+        title: "Cybersecurity Practice Lab",
         description:
-          "A year-long personal project documenting my city, one photo a week. It taught me patience and a good eye for light.",
+          "An isolated virtual environment using Kali Linux and Metasploitable 2 to explore network reconnaissance, vulnerability assessment, and penetration testing concepts. Experimenting with tools such as Nmap and Metasploit to better understand system security.",
         image: "assets/img/project-3.svg",
-        tags: ["Photography", "Personal"],
+        tags: ["Cybersecurity", "Linux", "VMware", "Nmap"],
         links: [
-          { type: "demo",   label: "View gallery", url: "https://example.com" },
-          { type: "source", label: "Source",       url: "" },
+          { type: "demo", label: "Lab Writeups", url: "" },
+          { type: "source", label: "Documentation", url: "" },
+        ],
+      },
+      {
+        featured: false,
+        title: "Python Programming Projects",
+        description:
+          "A growing collection of Python scripts, programming challenges, and experiments. Exploring automation, data processing, functions, and problem-solving while improving my programming skills.",
+        image: "assets/img/project-1.svg",
+        tags: ["Python", "Programming", "Automation"],
+        links: [
+          { type: "demo", label: "View Projects", url: "" },
+          { type: "source", label: "GitHub", url: "" },
         ],
       },
     ],
   },
+
 
   /* ===================================================================
      ===== GALLERY  (a photo grid) — safe to delete ===================
@@ -360,7 +481,7 @@ const SITE = {
      images in /assets/img and list them here. Square-ish photos look best.
        image   · the picture path
        caption · OPTIONAL — shown under the photo and in the viewer ("" hides it) */
-  gallery: {
+ /* gallery: {
     intro: "A few moments & visuals",
     items: [
       { image: "assets/img/gallery-1.svg", caption: "Add a caption — or leave it blank" }, // 👉 EDIT
@@ -370,14 +491,14 @@ const SITE = {
       { image: "assets/img/gallery-5.svg", caption: "" },
       { image: "assets/img/gallery-6.svg", caption: "Add or remove as many as you like" },
     ],
-  },
+  },/*
 
   /* ===================================================================
      ===== WRITING  (optional blog/notes teasers) — safe to delete ====
      ===================================================================
      These are just static cards for now. The GROWING.md guide explains
      how to load real posts from a blog or notes app later. */
-  writing: {
+  /*writing: {
     intro: "Notes & things I've written",
     items: [
       {
@@ -399,12 +520,12 @@ const SITE = {
         url: "https://example.com/post-three",
       },
     ],
-  },
+  },/*
 
   /* ===================================================================
      ===== TESTIMONIALS / REFERENCES  — safe to delete ================
      =================================================================== */
-  testimonials: {
+  /*testimonials: {
     intro: "Kind words",
     items: [
       {
@@ -427,7 +548,7 @@ const SITE = {
     intro: "Say hello",
     heading: "Let's connect",                       // 👉 EDIT
     text: "I'm always happy to chat — about work, ideas, or just to say hi. Drop me a line and I'll get back to you.", // 👉 EDIT
-    email: "hello@example.com",                     // 👉 EDIT — your email address
+    email: "denvass2020@gmail.com",                     // 👉 EDIT — your email address
     emailButtonLabel: "Send me an email",
 
     // OPTIONAL contact form (an add-on). It is OFF by default because it
@@ -450,7 +571,7 @@ const SITE = {
     // repo so visitors can see the code or give it a ⭐. Set url to "" to hide.
     repo: {
       label: "View the code on GitHub",     // 👉 EDIT
-      url: "https://github.com/your-username/your-repo",  // 👉 EDIT — your repo (or "" to hide)
+      url: "https://github.com/DenzelVW-xyz/portfolio-starter-kit",  // 👉 EDIT — your repo (or "" to hide)
     },
     showCredit: true,   // the small "Built with the Starter portfolio template" line — set false to remove
   },
@@ -464,11 +585,11 @@ const SITE = {
        bluesky · youtube · codepen · globe (website) · mail (email)
      For "mail", write the address with mailto:  — see below. */
   social: [
-    { icon: "github",   label: "GitHub",   url: "https://github.com/your-username" },   // 👉 EDIT
-    { icon: "linkedin", label: "LinkedIn", url: "https://linkedin.com/in/your-name" },  // 👉 EDIT
-    { icon: "instagram",label: "Instagram",url: "https://instagram.com/your-handle" },  // 👉 EDIT
+    { icon: "github",   label: "GitHub",   url: "https://github.com/DenzelVW-xyz" },   // 👉 EDIT
+    { icon: "linkedin", label: "LinkedIn", url: "https://linkedin.com/in/denzel-vassallo-wright" },  // 👉 EDIT
+    { icon: "instagram",label: "Instagram",url: "https://instagram.com/denzelvassallowright" },  // 👉 EDIT
     { icon: "globe",    label: "Website",  url: "" },                                    // 👉 EDIT (add a url to show)
-    { icon: "mail",     label: "Email",    url: "mailto:hello@example.com" },            // 👉 EDIT
+    //{ icon: "mail",     label: "Email",    url: "mailto:hello@example.com" },            // 👉 EDIT
   ],
 
 };
