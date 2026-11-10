@@ -1,15 +1,306 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" role="img" aria-label="Project image placeholder">
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="750" viewBox="0 0 1200 750" role="img" aria-labelledby="title desc">
+  <title id="title">Denzel's self-hosted homelab architecture</title>
+  <desc id="desc">A portfolio diagram showing remote access through Tailscale, a private home LAN, a repurposed Debian desktop PC, host-native services, Docker containers, DNS resolution through Pi-hole and Unbound, and two Bambu Lab A1 printers. Private addresses are intentionally omitted.</desc>
   <defs>
-    <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#e7ecf3"/>
-      <stop offset="1" stop-color="#cfd9e8"/>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#17121b"/>
+      <stop offset="0.56" stop-color="#1b1520"/>
+      <stop offset="1" stop-color="#241b29"/>
     </linearGradient>
+    <linearGradient id="hostFill" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#241b29" stop-opacity="0.94"/>
+      <stop offset="1" stop-color="#17121b" stop-opacity="0.98"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#dc8ca9"/>
+      <stop offset="1" stop-color="#bd91d6"/>
+    </linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#4c394b" stroke-opacity="0.20" stroke-width="1"/>
+    </pattern>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000" flood-opacity="0.28"/>
+    </filter>
+    <filter id="softGlow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <marker id="arrowBlue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10Z" fill="#dc8ca9"/>
+    </marker>
+    <marker id="arrowPurple" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10Z" fill="#bd91d6"/>
+    </marker>
+    <marker id="arrowGray" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10Z" fill="#b8a8b8"/>
+    </marker>
+
+    <symbol id="i-globe" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.2 4.2 6.2 4.2 9S15 17.8 12 21M12 3C9 6.2 7.8 9.2 7.8 12S9 17.8 12 21"/>
+    </symbol>
+    <symbol id="i-laptop" viewBox="0 0 24 24">
+      <rect x="4" y="4" width="16" height="11" rx="2"/><path d="M2.5 18h19l-2 2h-15z"/>
+    </symbol>
+    <symbol id="i-router" viewBox="0 0 24 24">
+      <rect x="3" y="10" width="18" height="8" rx="2"/><path d="M7 14h.01M11 14h.01M16 7c1.6.4 2.6 1.4 3 3M8 7c-1.6.4-2.6 1.4-3 3M12 4v6"/>
+    </symbol>
+    <symbol id="i-printer" viewBox="0 0 24 24">
+      <path d="M7 8V3h10v5M6 17H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="7" rx="1"/>
+    </symbol>
+    <symbol id="i-pc" viewBox="0 0 24 24">
+      <rect x="4" y="2.5" width="16" height="19" rx="2"/><path d="M8 7h8M8 11h8M8 15h4"/><circle cx="16" cy="17" r="1"/>
+    </symbol>
+    <symbol id="i-cube" viewBox="0 0 24 24">
+      <path d="M12 2.5l8 4.5v10l-8 4.5L4 17V7zM4.5 7.2L12 12l7.5-4.8M12 12v9"/>
+    </symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24">
+      <path d="M12 2.5l8 3v6.2c0 5-3.2 8.1-8 9.8-4.8-1.7-8-4.8-8-9.8V5.5z"/><path d="M8.5 12l2.2 2.2 4.8-5"/>
+    </symbol>
+    <symbol id="i-db" viewBox="0 0 24 24">
+      <ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/>
+    </symbol>
+    <symbol id="i-dns" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="9"/><path d="M7 9h10M7 12h10M7 15h7"/>
+    </symbol>
+    <symbol id="i-game" viewBox="0 0 24 24">
+      <path d="M8 8h8a5 5 0 0 1 4.8 6.4l-1 3.2a2.3 2.3 0 0 1-4.1.6L14.5 16h-5l-1.2 2.2a2.3 2.3 0 0 1-4.1-.6l-1-3.2A5 5 0 0 1 8 8z"/><path d="M8 11v4M6 13h4M16.5 12h.01M18 14h.01"/>
+    </symbol>
+    <symbol id="i-ai" viewBox="0 0 24 24">
+      <path d="M9 4a3 3 0 0 0-3 3v1a3 3 0 0 0-2 5 3 3 0 0 0 3 4h2M15 4a3 3 0 0 1 3 3v1a3 3 0 0 1 2 5 3 3 0 0 1-3 4h-2M9 4v16M15 4v16M9 9h6M9 15h6"/>
+    </symbol>
   </defs>
-  <rect width="1200" height="750" fill="url(#g1)"/>
-  <g fill="none" stroke="#9aa8bd" stroke-width="6">
-    <rect x="360" y="250" width="480" height="300" rx="18"/>
-    <path d="M360 470l120-110 90 80 140-150 130 130"/>
+
+  <style>
+    .sans{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Arial,sans-serif}
+    .mono{font-family:"SFMono-Regular",Consolas,"Liberation Mono",monospace}
+    .title{font-size:25px;font-weight:700;fill:#fff2f7;letter-spacing:-.35px}
+    .subtitle{font-size:11px;fill:#b8a8b8}
+    .eyebrow{font-size:8px;font-weight:700;letter-spacing:1.5px;fill:#b8a8b8}
+    .section{font-size:13px;font-weight:650;fill:#fff2f7}
+    .label{font-size:11px;font-weight:650;fill:#f7e7ef}
+    .small{font-size:9px;fill:#c4b3c1}
+    .tiny{font-size:8px;fill:#c1aebe}
+    .card{fill:#251d2a;stroke:#4c394b;stroke-width:1}
+    .physical{fill:#251d2a;stroke:#dc8ca9;stroke-width:1.2}
+    .service{fill:#17121b;stroke:#4c394b;stroke-width:1}
+    .service:hover{stroke:#dc8ca9}
+    .icon{fill:none;stroke:#e5d0dc;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+    .iconBlue{fill:none;stroke:#dc8ca9;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+    .iconPurple{fill:none;stroke:#bd91d6;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+    .flow{fill:none;stroke:#dc8ca9;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#arrowBlue)}
+    .flowBoth{fill:none;stroke:#dc8ca9;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;marker-start:url(#arrowBlue);marker-end:url(#arrowBlue)}
+    .dns{fill:none;stroke:#bd91d6;stroke-width:1.5;stroke-dasharray:5 5;stroke-linecap:round;marker-end:url(#arrowPurple)}
+    .link{fill:none;stroke:#b8a8b8;stroke-width:1.2;stroke-dasharray:3 5;stroke-linecap:round;marker-end:url(#arrowGray)}
+    .pill{fill:#302432;stroke:#4c394b;stroke-width:1}
+  </style>
+
+  <rect width="1200" height="750" fill="url(#bg)"/>
+  <rect width="1200" height="750" fill="url(#grid)"/>
+  <circle cx="1110" cy="10" r="165" fill="#dc8ca9" opacity="0.035"/>
+  <circle cx="1040" cy="735" r="210" fill="#bd91d6" opacity="0.03"/>
+
+  <!-- Header -->
+  <rect x="34" y="24" width="5" height="41" rx="2.5" fill="url(#accent)"/>
+  <text x="53" y="46" class="sans title">Self-Hosted Homelab</text>
+  <text x="53" y="64" class="sans subtitle">PRIVATE-BY-DESIGN • REPURPOSED HARDWARE • CONTAINERIZED SERVICES</text>
+  <rect x="1000" y="31" width="165" height="28" rx="14" class="pill"/>
+  <circle cx="1018" cy="45" r="4" fill="#dc8ca9"/>
+  <text x="1030" y="49" class="mono small" fill="#e5d0dc">SYSTEM OVERVIEW</text>
+
+  <!-- Connection layer (kept behind cards) -->
+  <path d="M140 181V338" class="link"/>
+  <path d="M245 258H285Q302 258 315 293" class="flowBoth"/>
+  <path d="M245 410H285" class="flowBoth"/>
+  <path d="M245 447H298Q315 447 330 409" class="dns"/>
+  <path d="M382 424C280 424 277 152 245 152" class="dns"/>
+  <path d="M245 542H275V668H1000V625" class="flowBoth"/>
+  <text x="554" y="678" class="mono tiny" fill="#d5bdd0">LAN printer control &amp; telemetry</text>
+
+  <!-- Left topology -->
+  <g filter="url(#shadow)">
+    <rect x="35" y="112" width="210" height="70" rx="12" class="card"/>
+    <circle cx="67" cy="147" r="20" fill="#342032" stroke="#dc8ca9" stroke-opacity=".65"/>
+    <use href="#i-globe" x="55" y="135" width="24" height="24" class="iconBlue"/>
+    <text x="98" y="143" class="sans label">Public Internet</text>
+    <text x="98" y="159" class="sans small">Updates • external DNS</text>
   </g>
-  <circle cx="520" cy="330" r="34" fill="#9aa8bd"/>
-  <text x="600" y="640" text-anchor="middle" font-family="system-ui, sans-serif" font-size="34" font-weight="600" fill="#7c8aa0">Project image · replace project-1.svg · ~1200×750</text>
+
+  <g filter="url(#shadow)">
+    <rect x="35" y="214" width="210" height="90" rx="12" class="physical"/>
+    <text x="54" y="234" class="mono eyebrow">REMOTE DEVICES</text>
+    <circle cx="68" cy="263" r="18" fill="#141b2d" stroke="#bd91d6" stroke-opacity=".7"/>
+    <use href="#i-laptop" x="57" y="252" width="22" height="22" class="iconPurple"/>
+    <text x="98" y="258" class="sans label">Trusted clients</text>
+    <text x="98" y="274" class="sans small">Private access via Tailscale</text>
+    <rect x="179" y="226" width="48" height="16" rx="8" fill="#261b3f"/>
+    <text x="188" y="237" class="mono tiny" fill="#e4b7e9">PHYSICAL</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="35" y="338" width="210" height="252" rx="12" class="physical"/>
+    <text x="54" y="360" class="mono eyebrow">HOME LAN</text>
+    <rect x="179" y="350" width="48" height="16" rx="8" fill="#392234"/>
+    <text x="188" y="361" class="mono tiny" fill="#f2b0c7">PHYSICAL</text>
+
+    <circle cx="68" cy="402" r="18" fill="#342032" stroke="#dc8ca9" stroke-opacity=".6"/>
+    <use href="#i-router" x="57" y="391" width="22" height="22" class="iconBlue"/>
+    <text x="98" y="397" class="sans label">Router / gateway</text>
+    <text x="98" y="413" class="sans small">Private network boundary</text>
+
+    <path d="M54 437H226" stroke="#4c394b"/>
+    <circle cx="68" cy="468" r="18" fill="#241b29" stroke="#4c394b"/>
+    <use href="#i-laptop" x="57" y="457" width="22" height="22" class="icon"/>
+    <text x="98" y="463" class="sans label">Admin workstation</text>
+    <text x="98" y="479" class="sans small">Management over LAN / Tailnet</text>
+
+    <circle cx="68" cy="526" r="18" fill="#241b29" stroke="#4c394b"/>
+    <use href="#i-printer" x="57" y="515" width="22" height="22" class="icon"/>
+    <text x="98" y="521" class="sans label">2× Bambu Lab A1</text>
+    <text x="98" y="537" class="sans small">Local printer endpoints</text>
+
+    <rect x="54" y="556" width="172" height="20" rx="6" fill="#17121b" stroke="#4c394b"/>
+    <text x="67" y="570" class="mono tiny">RFC1918 ADDRESSES OMITTED</text>
+  </g>
+
+  <!-- Host boundary -->
+  <rect x="285" y="100" width="880" height="600" rx="18" fill="url(#hostFill)" stroke="#4c394b" stroke-width="1.2" filter="url(#shadow)"/>
+  <path d="M303 101H1147" stroke="url(#accent)" stroke-width="2" opacity=".8"/>
+  <text x="310" y="124" class="mono eyebrow">PHYSICAL HOST • REPURPOSED DESKTOP PC</text>
+
+  <!-- Hardware strip -->
+  <rect x="310" y="139" width="830" height="80" rx="12" class="physical"/>
+  <circle cx="347" cy="179" r="23" fill="#342032" stroke="#dc8ca9" stroke-opacity=".7"/>
+  <use href="#i-pc" x="334" y="166" width="26" height="26" class="iconBlue"/>
+  <text x="382" y="171" class="sans section">Debian 13 host</text>
+  <text x="382" y="190" class="sans small">General-purpose PC repurposed as a private homelab server</text>
+  <g class="mono small">
+    <rect x="685" y="158" width="130" height="42" rx="8" class="pill"/>
+    <text x="699" y="175" fill="#b8a8b8">CPU</text><text x="699" y="190" fill="#f7e7ef">i5-9400F • 6C</text>
+    <rect x="825" y="158" width="104" height="42" rx="8" class="pill"/>
+    <text x="839" y="175" fill="#b8a8b8">MEMORY</text><text x="839" y="190" fill="#f7e7ef">15 GiB</text>
+    <rect x="939" y="158" width="181" height="42" rx="8" class="pill"/>
+    <text x="953" y="175" fill="#b8a8b8">GPU ACCELERATION</text><text x="953" y="190" fill="#f7e7ef">NVIDIA RTX 2060</text>
+  </g>
+
+  <!-- Host native services -->
+  <rect x="310" y="239" width="285" height="418" rx="14" fill="#17121b" stroke="#4c394b"/>
+  <circle cx="330" cy="260" r="4" fill="#dc8ca9"/>
+  <text x="342" y="264" class="sans section">Host-native services</text>
+  <text x="574" y="264" text-anchor="end" class="mono tiny">SYSTEMD / LOCAL</text>
+
+  <rect x="328" y="280" width="249" height="66" rx="9" class="service"/>
+  <use href="#i-shield" x="343" y="294" width="22" height="22" class="iconBlue"/>
+  <text x="376" y="302" class="sans label">Tailscale + SSH</text>
+  <text x="376" y="319" class="sans small">Authenticated remote management</text>
+  <rect x="493" y="291" width="68" height="17" rx="8" fill="#392234"/>
+  <text x="505" y="303" class="mono tiny" fill="#f2b0c7">ACCESS</text>
+
+  <rect x="328" y="359" width="249" height="92" rx="9" class="service"/>
+  <use href="#i-dns" x="343" y="376" width="22" height="22" class="iconPurple"/>
+  <text x="376" y="383" class="sans label">Pi-hole</text>
+  <text x="376" y="399" class="sans small">LAN DNS filtering</text>
+  <path d="M376 419H478" stroke="#bd91d6" stroke-width="1.2" marker-end="url(#arrowPurple)"/>
+  <text x="376" y="436" class="sans label">Unbound</text>
+  <text x="489" y="436" class="sans small">recursive resolver</text>
+
+  <rect x="328" y="464" width="249" height="72" rx="9" class="service"/>
+  <use href="#i-game" x="343" y="481" width="22" height="22" class="iconBlue"/>
+  <text x="376" y="488" class="sans label">PufferPanel</text>
+  <text x="376" y="505" class="sans small">Game server management</text>
+  <text x="376" y="520" class="sans tiny">Minecraft / Valheim workloads on demand</text>
+
+  <rect x="328" y="549" width="249" height="89" rx="9" class="service"/>
+  <use href="#i-ai" x="343" y="565" width="22" height="22" class="iconPurple"/>
+  <text x="376" y="573" class="sans label">Ollama API</text>
+  <text x="376" y="589" class="sans small">Local model inference</text>
+  <path d="M344 605H560" stroke="#4c394b"/>
+  <use href="#i-shield" x="343" y="611" width="17" height="17" class="icon"/>
+  <text x="370" y="624" class="sans small">Fail2Ban • host protection</text>
+
+  <!-- Docker boundary -->
+  <rect x="617" y="239" width="523" height="418" rx="14" fill="#17121b" stroke="#dc8ca9" stroke-opacity=".52" stroke-dasharray="5 5"/>
+  <circle cx="637" cy="260" r="4" fill="#bd91d6"/>
+  <text x="649" y="264" class="sans section">Docker Compose workloads</text>
+  <text x="1119" y="264" text-anchor="end" class="mono tiny">10 RUNNING CONTAINERS</text>
+
+  <!-- Docker cards row 1 -->
+  <g>
+    <rect x="635" y="280" width="235" height="69" rx="9" class="service"/>
+    <circle cx="655" cy="300" r="11" fill="#392234"/><text x="655" y="304" text-anchor="middle" class="mono small" fill="#dc8ca9">H</text>
+    <text x="676" y="303" class="sans label">Homepage</text>
+    <text x="652" y="325" class="sans small">Service dashboard and entry point</text>
+    <text x="852" y="338" text-anchor="end" class="mono tiny">1 CONTAINER</text>
+  </g>
+  <g>
+    <rect x="888" y="280" width="234" height="69" rx="9" class="service"/>
+    <circle cx="908" cy="300" r="11" fill="#31213c"/><text x="908" y="304" text-anchor="middle" class="mono small" fill="#bd91d6">P</text>
+    <text x="929" y="303" class="sans label">Portainer</text>
+    <text x="905" y="325" class="sans small">Container administration</text>
+    <text x="1104" y="338" text-anchor="end" class="mono tiny">1 CONTAINER</text>
+  </g>
+
+  <!-- Docker cards row 2 -->
+  <g>
+    <rect x="635" y="361" width="235" height="78" rx="9" class="service"/>
+    <circle cx="655" cy="382" r="11" fill="#392234"/><text x="655" y="386" text-anchor="middle" class="mono small" fill="#dc8ca9">U</text>
+    <text x="676" y="385" class="sans label">Uptime Kuma</text>
+    <text x="652" y="407" class="sans small">Availability monitoring</text>
+    <text x="852" y="427" text-anchor="end" class="mono tiny">1 CONTAINER</text>
+  </g>
+  <g>
+    <rect x="888" y="361" width="234" height="78" rx="9" class="service"/>
+    <circle cx="908" cy="382" r="11" fill="#31213c"/><text x="908" y="386" text-anchor="middle" class="mono small" fill="#bd91d6">S</text>
+    <text x="929" y="385" class="sans label">Scanopy</text>
+    <text x="905" y="407" class="sans small">Network discovery and topology</text>
+    <text x="1104" y="427" text-anchor="end" class="mono tiny">APP + DAEMON + DB</text>
+  </g>
+
+  <!-- Docker cards row 3 -->
+  <g>
+    <rect x="635" y="451" width="235" height="78" rx="9" class="service"/>
+    <circle cx="655" cy="472" r="11" fill="#392234"/><text x="655" y="476" text-anchor="middle" class="mono small" fill="#dc8ca9">S</text>
+    <text x="676" y="475" class="sans label">SearXNG</text>
+    <text x="652" y="497" class="sans small">Private metasearch</text>
+    <text x="852" y="517" text-anchor="end" class="mono tiny">1 CONTAINER</text>
+  </g>
+  <g>
+    <rect x="888" y="451" width="234" height="78" rx="9" class="service"/>
+    <use href="#i-db" x="897" y="462" width="22" height="22" class="iconPurple"/>
+    <text x="929" y="475" class="sans label">Cyber Intelligence</text>
+    <text x="905" y="497" class="sans small">PostgreSQL 16 datastore</text>
+    <text x="1104" y="517" text-anchor="end" class="mono tiny">1 CONTAINER</text>
+  </g>
+
+  <!-- Docker cards row 4 -->
+  <g>
+    <rect x="635" y="541" width="235" height="96" rx="9" fill="#101827" stroke="#dc8ca9" stroke-opacity=".55"/>
+    <circle cx="655" cy="563" r="11" fill="#392234"/><text x="655" y="567" text-anchor="middle" class="mono small" fill="#dc8ca9">B</text>
+    <text x="676" y="566" class="sans label">Bambu Studio</text>
+    <text x="652" y="588" class="sans small">Remote slicing and printer control</text>
+    <rect x="652" y="601" width="85" height="17" rx="8" fill="#392234"/>
+    <text x="663" y="613" class="mono tiny" fill="#f2b0c7">GPU PASSTHROUGH</text>
+    <text x="852" y="625" text-anchor="end" class="mono tiny">1 CONTAINER</text>
+  </g>
+  <g>
+    <rect x="888" y="541" width="234" height="96" rx="9" fill="#151326" stroke="#bd91d6" stroke-opacity=".55"/>
+    <circle cx="908" cy="563" r="11" fill="#31213c"/><text x="908" y="567" text-anchor="middle" class="mono small" fill="#bd91d6">B</text>
+    <text x="929" y="566" class="sans label">Bambuddy</text>
+    <text x="905" y="588" class="sans small">Printer monitoring and management</text>
+    <rect x="905" y="601" width="69" height="17" rx="8" fill="#261b3f"/>
+    <text x="916" y="613" class="mono tiny" fill="#e4b7e9">PERSISTENT</text>
+    <text x="1104" y="625" text-anchor="end" class="mono tiny">1 CONTAINER</text>
+  </g>
+
+  <!-- Legend and footer -->
+  <g>
+    <rect x="35" y="620" width="210" height="68" rx="10" fill="#17121b" stroke="#4c394b"/>
+    <text x="52" y="640" class="mono eyebrow">LEGEND</text>
+    <rect x="52" y="651" width="18" height="12" rx="3" fill="#251d2a" stroke="#dc8ca9"/><text x="79" y="661" class="sans tiny">physical device</text>
+    <rect x="143" y="651" width="18" height="12" rx="3" class="service"/><text x="170" y="661" class="sans tiny">software</text>
+    <path d="M52 676H70" class="flow"/><text x="79" y="679" class="sans tiny">network</text>
+    <path d="M143 676H161" class="dns"/><text x="170" y="679" class="sans tiny">DNS</text>
+  </g>
+
+  <text x="35" y="727" class="sans tiny">Portfolio architecture • private addresses and credentials intentionally omitted</text>
+  <text x="1165" y="727" text-anchor="end" class="mono tiny">DENZELVW.DEV / HOMELAB</text>
 </svg>

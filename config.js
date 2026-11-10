@@ -439,7 +439,7 @@ const SITE = {
         title: "CyberIntel Database",
         description:
           "A cybersecurity-focused relational database built using PostgreSQL and Docker. Designed to organise CVE vulnerabilities, affected software, version ranges, and exploit references while maintaining data integrity through relational constraints.",
-        image: "assets/img/project-2.svg",
+        image: "assets/img/cyberintel-architecture.svg",
         tags: ["PostgreSQL", "SQL", "Docker", "Cybersecurity"],
         links: [
           { type: "demo", label: "Live Demo", url: "" },
@@ -451,7 +451,7 @@ const SITE = {
         title: "Cybersecurity Practice Lab",
         description:
           "An isolated virtual environment using Kali Linux and Metasploitable 2 to explore network reconnaissance, vulnerability assessment, and penetration testing concepts. Experimenting with tools such as Nmap and Metasploit to better understand system security.",
-        image: "assets/img/project-3.svg",
+        image: "assets/img/cybersecurity-lab.svg",
         tags: ["Cybersecurity", "Linux", "VMware", "Nmap"],
         links: [
           { type: "demo", label: "Lab Writeups", url: "" },
@@ -463,7 +463,7 @@ const SITE = {
         title: "Python Programming Projects",
         description:
           "A growing collection of Python scripts, programming challenges, and experiments. Exploring automation, data processing, functions, and problem-solving while improving my programming skills.",
-        image: "assets/img/project-1.svg",
+        image: "assets/img/python-projects.svg",
         tags: ["Python", "Programming", "Automation"],
         links: [
           { type: "demo", label: "View Projects", url: "" },

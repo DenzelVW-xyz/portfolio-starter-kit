@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 320" width="640" height="320" role="img" aria-labelledby="title desc">
+  <title id="title">DVW monogram</title>
+  <desc id="desc">Angular italic DVW monogram in dusty pink with a subtle darker offset shadow, on a transparent background.</desc>
+  <defs>
+    <g id="mark" fill-rule="evenodd">
+      <!-- Angular D, with open counter -->
+      <path d="M101 91 H169 C210 91 229 112 223 149 C218 189 190 218 146 218 H70 Z M126 121 L105 187 H145 C168 187 184 172 189 150 C194 131 185 121 164 121 Z"/>
+      <!-- Interlocking V and W, drawn as one continuous visual system -->
+      <path d="M211 91 H249 L265 177 L312 91 H350 L281 218 H238 Z"/>
+      <path d="M323 91 H360 L364 172 L402 91 H437 L439 172 L476 91 H512 L452 218 H414 L411 145 L376 218 H337 Z"/>
+      <!-- Signature speed cuts on D -->
+    </g>
+  </defs>
+  <g transform="translate(15 0) skewX(-5)">
+    <use href="#mark" fill="#ad5876" transform="translate(7 7)"/>
+    <use href="#mark" fill="#d7839d"/>
+    <g stroke="#231a24" stroke-width="7" stroke-linecap="square">
+      <path d="M83 123 H112"/>
+      <path d="M77 142 H105"/>
+      <path d="M73 161 H99"/>
+    </g>
+  </g>
+</svg>
